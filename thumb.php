@@ -49,8 +49,8 @@ if (isset($path['scheme'])) {
     }
 }
 
-if (!extension_loaded('gd')) {
-    die('GD extension is not installed');
+foreach ( ['gd', 'mbstring', 'exif'] as $extension ) if( !extension_loaded($extension) ) {
+    die ("$extension extension is not installed");
 }
 if (!is_writable(THUMB_CACHE)) {
     die('Cache not writable');
